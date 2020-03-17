@@ -69,6 +69,9 @@ dependencies {
     implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
     implementation "com.jakewharton.rxbinding3:rxbinding-material:$rxbinding_version"
 
+    // Dependencies for simple caching
+    implementation "com.orhanobut:hawk:$hawk_version"
+
     // Dependencies for unit test
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
