@@ -1,6 +1,5 @@
 package men.ngopi.zain.datapenduduk.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import men.ngopi.zain.datapenduduk.data.repository.Repository
 import men.ngopi.zain.datapenduduk.databinding.ActivityHomeBinding
