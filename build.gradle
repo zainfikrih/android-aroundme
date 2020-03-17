@@ -40,4 +40,5 @@ ext {
     espresso_core_version = '3.2.0'
     room_version = '2.2.4'
     archLifecycle_version = '2.2.0'
+    dagger_version = '2.26'
 }

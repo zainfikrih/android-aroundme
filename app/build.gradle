@@ -50,6 +50,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$archLifecycle_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     // Dependencies for unit test
     testImplementation "junit:junit:$junit_version"
