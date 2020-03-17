@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
+import io.reactivex.schedulers.Schedulers
 import men.ngopi.zain.datapenduduk.BuildConfig
 import men.ngopi.zain.datapenduduk.data.repository.Repository
 import men.ngopi.zain.datapenduduk.data.source.local.LocalRepository
@@ -54,7 +55,7 @@ class RepositoryModule {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
