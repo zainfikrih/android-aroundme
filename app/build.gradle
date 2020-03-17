@@ -18,8 +18,13 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            buildConfigField('String', 'BASE_URL', '"https://dev.farizdotid.com/api/"')
+        }
+        release {
+            buildConfigField('String', 'BASE_URL', '"https://dev.farizdotid.com/api/"')
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
