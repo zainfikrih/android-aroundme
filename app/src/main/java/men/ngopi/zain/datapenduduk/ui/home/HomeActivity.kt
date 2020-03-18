@@ -3,12 +3,12 @@ package men.ngopi.zain.datapenduduk.ui.home
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import javax.inject.Inject
 import men.ngopi.zain.datapenduduk.data.model.Province
 import men.ngopi.zain.datapenduduk.databinding.ActivityHomeBinding
 import men.ngopi.zain.datapenduduk.di.ViewModelFactory
 import men.ngopi.zain.datapenduduk.ui.base.BaseActivity
 import men.ngopi.zain.datapenduduk.util.ext.observe
-import javax.inject.Inject
 
 class HomeActivity : BaseActivity() {
 

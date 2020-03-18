@@ -2,8 +2,6 @@ package men.ngopi.zain.datapenduduk.data.source.local.converter
 
 import androidx.room.TypeConverter
 import men.ngopi.zain.datapenduduk.data.model.Education
-import java.lang.IllegalArgumentException
-import java.util.*
 
 object EducationConverter {
     @TypeConverter
@@ -15,7 +13,7 @@ object EducationConverter {
     @TypeConverter
     @JvmStatic
     fun toEducation(value: Int): Education {
-        return when(value) {
+        return when (value) {
             0 -> Education.SD
             1 -> Education.SMP
             2 -> Education.SMA

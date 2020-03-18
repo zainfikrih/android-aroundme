@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 import men.ngopi.zain.datapenduduk.data.mapper.AllProvinceDataMapper
 import men.ngopi.zain.datapenduduk.data.model.Province
 import men.ngopi.zain.datapenduduk.data.repository.Repository
 import men.ngopi.zain.datapenduduk.ui.base.BaseViewModel
 import men.ngopi.zain.datapenduduk.util.Constant.ERROR_MESSAGE
 import men.ngopi.zain.datapenduduk.util.ext.addCompositeDisposable
-import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val repository: Repository) : BaseViewModel() {
     private val mAllProvince = MutableLiveData<List<Province>>()

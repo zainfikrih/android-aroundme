@@ -5,6 +5,7 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Singleton
 import men.ngopi.zain.datapenduduk.BuildConfig
 import men.ngopi.zain.datapenduduk.data.repository.Repository
 import men.ngopi.zain.datapenduduk.data.source.local.LocalRepository
@@ -17,7 +18,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class RepositoryModule {

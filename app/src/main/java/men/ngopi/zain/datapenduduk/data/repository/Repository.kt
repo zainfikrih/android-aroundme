@@ -48,5 +48,4 @@ class Repository(
     override fun setCacheAllProvince(provinces: List<Province>) {
         prefRepository.setAllProvince(provinces)
     }
-
 }

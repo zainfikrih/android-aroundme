@@ -3,8 +3,8 @@ package men.ngopi.zain.datapenduduk.di
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
-import men.ngopi.zain.datapenduduk.ui.home.HomeActivity
 import javax.inject.Singleton
+import men.ngopi.zain.datapenduduk.ui.home.HomeActivity
 
 @Singleton
 @Component(
@@ -25,5 +25,4 @@ interface AppComponent {
     }
 
     fun inject(homeActivity: HomeActivity)
-
 }
