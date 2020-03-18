@@ -1,6 +1,7 @@
 package men.ngopi.zain.datapenduduk.data.repository
 
 import io.reactivex.Observable
+import io.reactivex.functions.Function
 import men.ngopi.zain.datapenduduk.data.model.Person
 import men.ngopi.zain.datapenduduk.data.model.Province
 import men.ngopi.zain.datapenduduk.data.source.local.LocalRepository
@@ -24,12 +25,12 @@ class Repository(
                 setCacheAllProvince(it)
                 Observable.just(it)
             }
-            .onErrorResumeNext { it: Throwable ->
-                return@onErrorResumeNext if (cacheAllProvince != null)
+            .onErrorResumeNext(Function {
+                return@Function if (cacheAllProvince != null)
                     Observable.just(cacheAllProvince)
                 else
                     Observable.error(it)
-            }
+            })
         return Observable.concatArrayEager(cacheObservable, remoteObservable)
     }
 
