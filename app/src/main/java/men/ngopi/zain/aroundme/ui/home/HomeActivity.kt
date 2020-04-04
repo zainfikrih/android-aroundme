@@ -85,6 +85,11 @@ class HomeActivity : BaseActivity() {
 
     private val onMapReadyCallback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
+        googleMap.isMyLocationEnabled = true
+        googleMap.setOnMyLocationButtonClickListener {
+            currentLocation()
+            true
+        }
         googleMap.setMapStyle(
             MapStyleOptions.loadRawResourceStyle(
                 this,
