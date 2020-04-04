@@ -15,7 +15,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline"
-        tools:context=".ui.home.MapsFragment" />
+        tools:context=".ui.home.MapsFragment"
+        tools:ignore="FragmentTagUsage" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
