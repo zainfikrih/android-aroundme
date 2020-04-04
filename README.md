@@ -1,6 +1,6 @@
 ## Aroundme
 
-![Architecture](./pictures/apps.jpeg)
+<img src="./pictures/apps.jpeg" alt="apps" width="250"/>
 
 ## Library References
 
