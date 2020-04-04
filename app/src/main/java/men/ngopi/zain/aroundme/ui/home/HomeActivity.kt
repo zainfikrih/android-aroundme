@@ -18,10 +18,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import men.ngopi.zain.aroundme.R
 import men.ngopi.zain.aroundme.data.model.PointLocation
 import men.ngopi.zain.aroundme.databinding.ActivityHomeBinding
@@ -40,6 +37,7 @@ class HomeActivity : BaseActivity() {
     private val viewModel by viewModel<HomeViewModel>()
     private var googleMap: GoogleMap? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var markerList: MutableList<Marker> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +68,14 @@ class HomeActivity : BaseActivity() {
             }
             setHasFixedSize(true)
             itemAnimator = DefaultItemAnimator()
-            adapter = PointAdapter(points)
+            PointAdapter(points).run {
+                adapter = this
+                onItemClick = { pos, _ ->
+                    val latLng = LatLng(points[pos].lat, points[pos].long)
+                    googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                    markerList[pos].showInfoWindow()
+                }
+            }
         }
     }
 
@@ -102,13 +107,14 @@ class HomeActivity : BaseActivity() {
 
     private fun drawPoint(pointLocation: PointLocation) {
         val latLng = LatLng(pointLocation.lat, pointLocation.long)
-        googleMap?.apply {
-            addMarker(
-                MarkerOptions()
-                    .position(latLng)
-                    .icon(bitmapDescriptorFromVector())
-                    .title(pointLocation.name)
-            )
+        val marker = googleMap?.addMarker(
+            MarkerOptions()
+                .position(latLng)
+                .icon(bitmapDescriptorFromVector())
+                .title(pointLocation.name)
+        )
+        marker?.run {
+            markerList.add(this)
         }
     }
 
