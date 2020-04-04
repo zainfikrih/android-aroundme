@@ -7,12 +7,13 @@
 This repository contains Aroundme apps with:
 
 1. MVVM with Architecture Components
-2. Repository with mock API
-3. Koin (For Dependency Injection)
-4. RxJava 2
-5. Android ViewBinding
-6. ktlint (Kotlin Style Guide Static Code Analysis Tool)
-7. Unit test:
+2. Google Maps SDK for Android
+3. Repository with mock API
+4. Koin (For Dependency Injection)
+5. RxJava 2
+6. Android ViewBinding
+7. ktlint (Kotlin Style Guide Static Code Analysis Tool)
+8. Unit test:
    - MockK (For mocking objects and verifying stubs)
    - Truth (For making more readable assertions)
    - AndroidX Testing (For accessing Test helpers to test LiveData)
