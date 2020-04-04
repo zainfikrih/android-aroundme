@@ -1,7 +1,7 @@
 package men.ngopi.zain.aroundme.data.model
 
-data class Location(
-    val lat: Int,
-    val long: Int,
+data class PointLocation(
+    val lat: Double,
+    val long: Double,
     val name: String? = null
 )

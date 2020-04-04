@@ -1,24 +1,24 @@
 package men.ngopi.zain.aroundme.data.source
 
 import io.reactivex.Observable
-import men.ngopi.zain.aroundme.data.model.Location
+import men.ngopi.zain.aroundme.data.model.PointLocation
 
 class MockRemoteRepository() {
-    fun getPoints(location: Location): Observable<List<Location>> {
-        val points = mutableListOf<Location>()
-        val latNumber: MutableSet<Int> = mutableSetOf()
-        val longNumber: MutableSet<Int> = mutableSetOf()
-        while (latNumber.size < 4) {
-            latNumber.add((100..800).random())
+    fun getPoints(location: PointLocation): Observable<List<PointLocation>> {
+        val points = mutableListOf<PointLocation>()
+        val latNumber: MutableSet<Double> = mutableSetOf()
+        val longNumber: MutableSet<Double> = mutableSetOf()
+        while (latNumber.size < 5) {
+            latNumber.add((-20..20).random() * 0.0003)
         }
-        while (longNumber.size < 4) {
-            longNumber.add((100..800).random())
+        while (longNumber.size < 5) {
+            longNumber.add((-20..20).random() * 0.0005)
         }
         val latList = latNumber.toList()
         val longList = longNumber.toList()
-        for (i in 1..4) {
+        for (i in 1..5) {
             points.add(
-                Location(
+                PointLocation(
                     location.lat + latList[i - 1],
                     location.long + longList[i - 1],
                     "Blue Points $i"
