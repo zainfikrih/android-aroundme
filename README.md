@@ -1,5 +1,7 @@
 ## Aroundme
 
+You can download the apk file in the apk folder [Download APK](./apk/app-debug.apk)
+
 <img src="./pictures/apps.jpeg" alt="apps" width="400"/>
 
 ## Library References
