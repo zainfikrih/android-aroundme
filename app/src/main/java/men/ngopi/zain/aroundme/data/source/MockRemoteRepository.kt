@@ -3,7 +3,7 @@ package men.ngopi.zain.aroundme.data.source
 import io.reactivex.Observable
 import men.ngopi.zain.aroundme.data.model.PointLocation
 
-class MockRemoteRepository() {
+class MockRemoteRepository {
     fun getPoints(location: PointLocation): Observable<List<PointLocation>> {
         val points = mutableListOf<PointLocation>()
         val latNumber: MutableSet<Double> = mutableSetOf()

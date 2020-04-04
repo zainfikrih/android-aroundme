@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -39,7 +38,7 @@ class HomeActivity : BaseActivity() {
     private val requestCodeLocation: Int = 101
     private lateinit var binding: ActivityHomeBinding
     private val viewModel by viewModel<HomeViewModel>()
-    private lateinit var googleMap: GoogleMap
+    private var googleMap: GoogleMap? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +57,7 @@ class HomeActivity : BaseActivity() {
 
     private fun onPointsLoaded(points: List<PointLocation>) {
         binding.progressBar.invisible()
+        binding.rvPoint.visible()
         points.forEach {
             drawPoint(it)
         }
@@ -102,7 +102,7 @@ class HomeActivity : BaseActivity() {
 
     private fun drawPoint(pointLocation: PointLocation) {
         val latLng = LatLng(pointLocation.lat, pointLocation.long)
-        googleMap.apply {
+        googleMap?.apply {
             addMarker(
                 MarkerOptions()
                     .position(latLng)
@@ -114,7 +114,7 @@ class HomeActivity : BaseActivity() {
 
     private fun drawMyLocation(latLng: LatLng) {
         binding.progressBar.visible()
-        googleMap.apply {
+        googleMap?.apply {
             clear()
             addMarker(
                 MarkerOptions()
@@ -123,7 +123,7 @@ class HomeActivity : BaseActivity() {
             )
             moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         }.also {
-            Log.d("LatLong", latLng.toString())
+            binding.rvPoint.invisible()
             viewModel.getPoints(PointLocation(latLng.latitude, latLng.longitude))
         }
     }
