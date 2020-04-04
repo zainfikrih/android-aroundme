@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "men.ngopi.zain.datapenduduk"
+        applicationId "men.ngopi.zain.aroundme"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -66,10 +66,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$archLifecycle_version"
-    implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // Dependencies for Koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     // Dependencies for Networking
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -83,9 +83,6 @@ dependencies {
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
     implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
     implementation "com.jakewharton.rxbinding3:rxbinding-material:$rxbinding_version"
-
-    // Dependencies for simple caching
-    implementation "com.orhanobut:hawk:$hawk_version"
 
     // Dependencies for unit test
     testImplementation "junit:junit:$junit_version"
