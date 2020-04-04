@@ -1,6 +1,6 @@
 ## Aroundme
 
-<img src="./pictures/apps.jpeg" alt="apps" width="250"/>
+<img src="./pictures/apps.jpeg" alt="apps" width="300"/>
 
 ## Library References
 
