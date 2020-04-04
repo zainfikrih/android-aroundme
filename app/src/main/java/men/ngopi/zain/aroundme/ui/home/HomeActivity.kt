@@ -85,6 +85,12 @@ class HomeActivity : BaseActivity() {
 
     private val onMapReadyCallback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
+        googleMap.setMapStyle(
+            MapStyleOptions.loadRawResourceStyle(
+                this,
+                R.raw.google_map_style_json
+            )
+        )
         googleMap.setOnMapClickListener(onMapClicked)
         requestPermission()
     }
@@ -119,6 +125,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun drawMyLocation(latLng: LatLng) {
+        markerList.clear()
         binding.progressBar.visible()
         googleMap?.apply {
             clear()

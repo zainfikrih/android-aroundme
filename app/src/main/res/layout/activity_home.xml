@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeActivity"
     android:fillViewport="true"
-    android:nestedScrollingEnabled="false">
+    android:nestedScrollingEnabled="false"
+    android:background="@color/colorBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -26,6 +26,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/tv_lat_long"
         tools:text="Name of point"
+        android:textColor="@android:color/white"
         style="@style/TextAppearance.MaterialComponents.Subtitle1"/>
 
     <TextView
@@ -38,6 +39,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Lat ....., Long ....."
+        android:textColor="@android:color/white"
         style="@style/TextAppearance.MaterialComponents.Caption"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
