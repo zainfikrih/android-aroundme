@@ -10,6 +10,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,8 +26,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 import men.ngopi.zain.aroundme.R
 import men.ngopi.zain.aroundme.data.model.PointLocation
 import men.ngopi.zain.aroundme.databinding.ActivityHomeBinding
+import men.ngopi.zain.aroundme.ui.adapter.PointAdapter
 import men.ngopi.zain.aroundme.ui.base.BaseActivity
+import men.ngopi.zain.aroundme.util.ext.invisible
 import men.ngopi.zain.aroundme.util.ext.observe
+import men.ngopi.zain.aroundme.util.ext.visible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -51,8 +57,20 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onPointsLoaded(points: List<PointLocation>) {
+        binding.progressBar.invisible()
         points.forEach {
-            drawPoint(it.lat, it.long)
+            drawPoint(it)
+        }
+        binding.rvPoint.apply {
+            layoutManager = LinearLayoutManager(
+                this@HomeActivity, RecyclerView.VERTICAL, false
+            ).apply {
+                reverseLayout = false
+                stackFromEnd = false
+            }
+            setHasFixedSize(true)
+            itemAnimator = DefaultItemAnimator()
+            adapter = PointAdapter(points)
         }
     }
 
@@ -82,18 +100,20 @@ class HomeActivity : BaseActivity() {
             }
     }
 
-    private fun drawPoint(lat: Double, lng: Double) {
-        val latLng = LatLng(lat, lng)
+    private fun drawPoint(pointLocation: PointLocation) {
+        val latLng = LatLng(pointLocation.lat, pointLocation.long)
         googleMap.apply {
             addMarker(
                 MarkerOptions()
                     .position(latLng)
                     .icon(bitmapDescriptorFromVector())
+                    .title(pointLocation.name)
             )
         }
     }
 
     private fun drawMyLocation(latLng: LatLng) {
+        binding.progressBar.visible()
         googleMap.apply {
             clear()
             addMarker(
